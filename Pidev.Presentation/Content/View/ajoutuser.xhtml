@@ -1,0 +1,103 @@
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" lang="fr"
+    xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/index.xhtml">
+	<ui:param name="page_name" value="index" />
+	<ui:define name="content2">
+		 <h:form class="form-horizontal">
+		<div class="card card-info" >
+              <div class="card-header" align="center">
+                <h1 class="card-title">Ajouter un utilisateur</h1>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+             
+                <div class="card-body" >
+                  <div class="form-group row" >
+                    <p:outputLabel  class="col-sm-2 col-form-label" ><b>CIN : </b></p:outputLabel>
+                    
+                    <div class="col-sm-10" >
+                      <p:inputText id="cin" class="form-control" type="text" placeholder="CIN..." 
+                       value="#{userBean.cin}" required="true" requiredMessage="Vous devez taper une identite" style="width: 30%;"/>
+                   <h:message for="nom" style="color:green" ></h:message>
+                    </div>
+                  </div>
+                 <div class="form-group row">
+                    <p:outputLabel  class="col-sm-2 col-form-label" ><b>Prenom : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<p:inputText id="prenom" class="form-control" type="text" placeholder="Foulen..."  
+						required="true" requiredMessage="Vous devez spécifier le prenom" value="#{userBean.prenom}" style="width: 30%;"/>
+					<h:message for="description" style="color:green"></h:message>
+					</div>
+                  </div>
+				    <div class="form-group row">
+                    <p:outputLabel  class="col-sm-2 col-form-label" ><b>Nom : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<p:inputText id="nom" class="form-control" type="text" placeholder="Ben Foulen..."  required="true" requiredMessage="Vous devez spécifier le nom" 
+						  value="#{userBean.nom}" style="width: 30%;"/>
+					<h:message for="niveau" style="color:green"></h:message>
+					</div>
+                  </div>
+                    <div class="form-group row">
+                    <p:outputLabel class="col-sm-2 col-form-label" ><b>Nom d'utilisateur : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<p:inputText id="login" class="form-control" type="text" placeholder="utilisateur123..."  
+						required="true" requiredMessage="Vous devez spécifier le login" value="#{userBean.login}" style="width: 30%;"/>
+						<h:message for="duree" style="color:green"></h:message>
+					</div>
+                  </div>
+                   <div class="form-group row">
+                    <p:outputLabel class="col-sm-2 col-form-label" ><b>Mot de passe : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<p:inputText id="motdepasse" class="form-control" type="text" placeholder=""  
+						required="true" requiredMessage="Vous devez spécifier le mot de passe" value="#{userBean.password}" style="width: 30%;"/>
+						<h:message for="duree" style="color:green"></h:message>
+					</div>
+                  </div>
+                  <div class="form-group row">
+                    <p:outputLabel class="col-sm-2 col-form-label" ><b>Adresse : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<p:inputText id="adresse" class="form-control" type="text" placeholder="01 Rue la liberté..."  
+						required="true" requiredMessage="Vous devez spécifier l'adresse" value="#{userBean.adresse}" style="width: 30%;"/>
+						<h:message for="duree" style="color:green"></h:message>
+					</div>
+                  </div>
+                  <div class="form-group row">
+                    <p:outputLabel class="col-sm-2 col-form-label" ><b>Adresse mail : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<p:inputText id="email" class="form-control" type="text" placeholder="mail..."  
+						required="true" requiredMessage="Vous devez spécifier l'adresse mail" value="#{userBean.email}" style="width: 30%;"/>
+						<h:message for="duree" style="color:green"></h:message>
+					</div>
+                  </div>
+                   <div class="form-group row">
+                    <p:outputLabel class="col-sm-2 col-form-label" ><b>Role : </b></p:outputLabel>
+                    <div class="col-sm-10">
+						<h:selectOneMenu value="#{userBean.role}" class="form-control" style="width: 30%;">
+						<f:selectItem itemLabel="Selectionner le Role" itemValue="" />
+						<f:selectItems value="#{data.roles}" />
+						</h:selectOneMenu>
+						<h:message for="duree" style="color:green"></h:message>
+					</div>
+                  </div>
+			
+                  
+                 
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer" align="center">
+                  <h:commandButton id="btn" class="btn btn-info" action="#{userBean.ajouteruser()}" value="Add" style="width: 20%; " />
+                </div>
+                <!-- /.card-footer -->
+             
+            </div>
+		
+		
+		 </h:form>
+	</ui:define>
+</ui:composition>

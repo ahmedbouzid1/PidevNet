@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" lang="fr"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/index.xhtml">
+	<ui:param name="page_name" value="index" />
+	<ui:define name="content2">
+	<h:form id="form">
+		<br></br>
+		<div class="row">
+			<br></br>
+			<div class="col-md-12">
+ 
+				<ui:repeat var="entry" value="#{gestion.mapPub.entrySet().toArray()}"	 >
+					<div class="card card-widget">
+						<div class="card-header">
+							<div class="user-block">
+								<img class="img-circle"
+									src="../resources/dist/img/user1-128x128.jpg" alt="User Image" />
+								<span class="username"><a href="#"><p>
+							 
+								<h:outputText  value="#{entry.key.nom_formation}"></h:outputText >
+							</p></a></span>
+								<span class="description">Shared publicly -
+									  ssss
+								</span>
+							</div>
+							<!-- /.user-block -->
+							<div class="card-tools">
+								<button type="button" class="btn btn-tool" data-toggle="tooltip"
+									title="Mark as read">
+									<i class="fa fa-circle-o"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-widget="collapse">
+									<i class="fa fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool" data-widget="remove">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+							<!-- /.card-tools -->
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body">
+						
+							<p>
+								<h:outputText  value="#{entry.key.description_formation}"></h:outputText >
+							</p>
+							<p>
+								<h:outputText  value="#{entry.key.niveau_formation}"></h:outputText >
+							</p>
+							
+							<p>
+								<h:outputText  value="#{entry.key.duree_formation}"></h:outputText >
+							</p>
+							<p>
+								<h:outputText  value="#{entry.key.dateDeb_formation}"></h:outputText >
+							</p>
+							<p>
+								<h:outputText  value="#{entry.key.prix_formation}"></h:outputText >
+							</p>
+							       
+        
+							<p:commandButton class="btn btn-primary btn-sm" action="#{gestion.modif(entry.key)}"  value="Modifier"/>
+	
+                    <p:commandButton class="btn btn-danger btn-sm" action="#{gestion.deleteFormation(entry.key.id)}" value="Supprimer" update="form"/>
+        			<p:commandButton class="btn btn-primary btn-sm" action="#{gestion.affect(entry.key)}"  value="Affecter des employés"/>
+							<br></br><h:outputText value="Note" />
+        					<p:rating value="#{entry.key.note.noteF}">
+            					<p:ajax event="rate" listener="#{ratingView.onrate}"  />
+            					<p:ajax event="cancel" listener="#{ratingView.oncancel}"  />
+        					</p:rating>
+							
+							<span class="float-right text-muted">#{entry.key.formationComments.size()}
+								comments</span>
+						</div>
+						<!-- /.card-body -->
+						<div class="card-footer card-comments">
+							<!-- Box Comment -->
+							<ui:repeat var="comment" value="#{entry.key.formationComments}">
+								<div class="card-comment">
+									<!-- User image -->
+									
+	
+									<div class="comment-text">
+										<span class="username">  <p>
+								<p:outputLabel value="#{comment.contenu}"></p:outputLabel>
+							</p><span
+											class="text-muted float-right">
+											
+											<p:outputLabel id="date"
+												converterMessage="#{i18n['converter-message']}"
+												value="#{com.dateCreation}">
+												<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+											</p:outputLabel>
+											
+											</span>
+										</span>
+										<!-- /.username -->
+										#{comment.contenu}
+									</div>
+									<!-- /.comment-text -->
+								</div>
+								<!-- /.card-comment -->
+							</ui:repeat>
+			<div class="timeline-item">
+                 
+                </div>
+						</div>
+						<!-- /.card-footer -->
+				
+                   <div class="input-group">
+                    <p:inputText type="text" name="message" value="#{entry.value.contenu}" placeholder="Tapez votre commentaire ..." class="form-control"/>
+                    <span class="input-group-append">
+                      <p:commandButton class="btn btn-primary" value="commenter..." action="#{gestion.ajouterComment(entry.value)}">
+<!--                        <p:ajax update="form" resetValues="true" /> -->
+                      </p:commandButton>
+                      </span>
+                  </div>
+						<!-- /.card-footer -->
+					</div>
+				<br></br>
+                
+           
+    
+					<!-- /.card -->
+				</ui:repeat>
+			</div>
+			<!-- /.col -->
+	
+		</div>
+		
+
+		</h:form>
+	</ui:define>
+</ui:composition>

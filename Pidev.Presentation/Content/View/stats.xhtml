@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+</h:head>
+
+<body>
+	<p:chart type="pie" model="#{pieChart.pieModel}"
+		style="width:400px;height:300px" />
+	<h:form id="form">
+		<h:panelGrid columns="2">
+			<h:commandButton id="btn" value="Back" action="#{loginBean.doback()}" />
+			<h:message for="btn" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" lang="fr"
+    xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/index.xhtml">
+	<ui:param name="page_name" value="index" />
+	<ui:define name="content2">
+		 <h:form id="form">	
+		 <style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+     
+    .ui-datatable {
+        margin-bottom: 25px
+    }
+     
+    .ui-datatable .ui-datatable-footer {
+        text-align:center;
+    }
+     
+    .ui-datalist ul {
+        padding: 0 0 0 10px;
+        margin: 5px 0;
+    }
+     
+    .ui-datatable .ui-button-icon-only .ui-button-text {
+        padding: 0;
+        line-height: 1.2;
+    }
+</style>
+ 
+		 <p:dataTable id="multipleDT" var="user" value="#{gestion.users}" selection="#{gestion.selectedUsers}" rowKey="#{user.id_user}">
+        <f:facet name="header">
+        </f:facet>
+         <p:column selectionMode="multiple" style="width:80px;text-align:center"/>
+       <p:column headerText="Nom">
+        			<h:outputText value="#{user.nom_user}" />
+        		</p:column>
+        		<p:column headerText="Prenom">
+        			<h:outputText value="#{user.prenom_user}" />
+        		</p:column>
+        <f:facet name="footer">
+            <p:commandButton value="dd" action="#{gestion.lire()}" update="form"/>
+        </f:facet>
+    </p:dataTable>
+		 
+		 </h:form>
+	</ui:define>
+</ui:composition>

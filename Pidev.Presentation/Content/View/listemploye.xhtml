@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" lang="fr"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/index.xhtml">
+	<ui:param name="page_name" value="index" />
+	<ui:define name="content2">
+	
+		<h:body>
+		
+			<br></br>
+			
+			
+			<br></br>
+			<a href="ajoutuser.xhtml">ajouter</a>
+			<br></br>
+			<h:form id="form">
+				<h:dataTable value="#{userBean.users}" var="userr"
+					styleClass="table">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Natinal Identity Card" />
+						</f:facet>
+						<h:outputText value="#{userr.cin}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Last Name" />
+						</f:facet>
+						<h:outputText value="#{userr.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="First Name" />
+						</f:facet>
+						<h:outputText value="#{userr.prenom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Username" />
+						</f:facet>
+						<h:outputText value="#{userr.login}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Password" />
+						</f:facet>
+						<h:outputText value="#{userr.password}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Adress" />
+						</f:facet>
+						<h:outputText value="#{userr.addresse}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{userr.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Birth date" />
+						</f:facet>
+						<h:outputText value="#{userr.dat_naiss}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Role" />
+						</f:facet>
+						<h:outputText value="#{userr.role}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton value="Embaucher" styleClass="btn btn-info" action="#{userBean.embaucher(userr.id)}"/>
+						<h:commandButton value="Delete" styleClass="btn btn-danger"
+							action="#{userBean.supprimer(userr.id)}" />
+					</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</h:body>
+	</ui:define>
+</ui:composition>

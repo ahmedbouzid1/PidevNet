@@ -1,0 +1,87 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" lang="fr"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/index.xhtml">
+	<ui:param name="page_name" value="index" />
+	<ui:define name="content2">
+	<br></br><br></br><br></br>
+    <center>
+		<h:form >
+			<div class="card card-primary" style="width: 1200px; ">
+				<div class="card-header"  style="background-color:#2393AB;">
+					<div class="user-block">
+						<img class="img-circle"
+							src="data:image/png;base64,#{loginbean.user.image}"
+							alt="User Image" /> <span class="username"><a href="#">Ajouter
+								une publication</a></span>
+					</div>
+				</div>
+
+				<div class="card-body">
+					<div class="form-group">
+						<p:inputTextarea
+							binding="#{description}"
+							class="form-control" rows="3" placeholder="Exprimez-vous" />
+					</div>
+				</div>
+
+				<div class="card-footer">
+					<h:commandButton class="btn btn-primary float-right" style="background-color:#026A81;"
+						value="Publier" action="#{publicationBean.ajouterPub(description.value)}" />
+				</div>
+			</div>
+		</h:form>
+		
+		</center>
+		
+		
+		
+		
+	
+		<h:form >
+			 
+		<ui:repeat value="#{publicationBean.mapPubCom.entrySet().toArray()}" var="entry">
+		<div class="card card-primary" style="width: 1200px">	
+		
+		<div class="card-header" style="background-color:white;">
+					<div class="user-block" style="color: purple; font-size: 30px; font-weight: bold;">
+						#{entry.key.user.nom} #{entry.key.user.prenom}
+					</div>
+				</div>
+		<div class="card-body">
+					<div class="form-group">
+						#{entry.key.description}
+					</div>
+					</div>
+ 				
+ 				
+			<ui:repeat value="#{entry.key.lstComm}" var="com">
+			<div class="card-footer">
+						
+						<div  style="color:black ; font-size: 15px; font-weight: bold;">
+						#{com.user.nom} #{com.user.prenom}
+					</div>
+					#{com.description}  
+				</div>
+ 				 
+ 				 	
+			</ui:repeat>
+			
+			<h:inputText value="#{entry.value.description}" />
+			<h:commandButton class="btn btn-primary float-right" style="background-color:grey ;" value="Publier" action="#{publicationBean.addComm(entry.value)}"/> 
+			
+			</div>
+		</ui:repeat>
+
+</h:form>
+ 
+
+
+	</ui:define>
+ 
+</ui:composition>
