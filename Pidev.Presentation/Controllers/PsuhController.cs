@@ -11,9 +11,11 @@ namespace Pidev.Presentation.Controllers
         // GET: Psuh
         public ActionResult Index()
         {
+            
             int yyy = 0;
             int xx = 0;
             int x = 9;
+            x = xx + yyy;
             return View();
         }
     }
