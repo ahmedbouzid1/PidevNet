@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pidev.Presentation.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,9 @@ namespace Pidev.Presentation.Controllers
     {
         public ActionResult Chat()
         {
+
+            User userc = Session["userConnected"] as User;
+
             return View();
         }
         

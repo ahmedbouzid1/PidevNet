@@ -9,6 +9,9 @@ namespace Pidev.Presentation.Models
 
     public class User
     {
+
+        public int id { get; set; }
+
         [StringLength(255)]
         public string addresse { get; set; }
 

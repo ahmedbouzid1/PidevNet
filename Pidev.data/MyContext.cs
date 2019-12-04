@@ -12,7 +12,7 @@ namespace Pidev.data
         {
         }
 
-        public virtual DbSet<C__migrationhistory> C__migrationhistory { get; set; }
+      //  public virtual DbSet<C__migrationhistory> C__migrationhistory { get; set; }
         public virtual DbSet<commentaire> commentaire { get; set; }
         public virtual DbSet<contrat> contrat { get; set; }
         public virtual DbSet<publication> publication { get; set; }
@@ -20,17 +20,17 @@ namespace Pidev.data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<C__migrationhistory>()
-                .Property(e => e.MigrationId)
-                .IsUnicode(false);
+            //modelBuilder.Entity<C__migrationhistory>()
+            //    .Property(e => e.MigrationId)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<C__migrationhistory>()
-                .Property(e => e.ContextKey)
-                .IsUnicode(false);
+            //modelBuilder.Entity<C__migrationhistory>()
+            //    .Property(e => e.ContextKey)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<C__migrationhistory>()
-                .Property(e => e.ProductVersion)
-                .IsUnicode(false);
+            //modelBuilder.Entity<C__migrationhistory>()
+            //    .Property(e => e.ProductVersion)
+            //    .IsUnicode(false);
 
             modelBuilder.Entity<commentaire>()
                 .Property(e => e.description)

@@ -12,6 +12,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Net.Mail;
+using System.Net;
 
 namespace Pidev.Presentation.Controllers
 {
@@ -69,13 +71,28 @@ namespace Pidev.Presentation.Controllers
                 prenom = userr.prenom,
                 role = userr.role
                 
-            }
+
+        }
                 );
-            requestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
+            
 
             var path = Path.Combine(Server.MapPath("~/Content/Uploads/"), Image.FileName);
             Image.SaveAs(path);
             HttpResponseMessage response = client.SendAsync(requestMessage).GetAwaiter().GetResult();
+            MailMessage mm = new MailMessage("advyteama@gmail.com", userr.email);
+            mm.Subject = "Iscription";
+            mm.Body = "Mr/Mme " + userr.nom + " " + userr.prenom + "  vous etes inscrit avec succés";
+            mm.Subject = "Iscription";
+            mm.IsBodyHtml = false;
+            SmtpClient smpt = new SmtpClient();
+            smpt.Host = "smtp.gmail.com";
+            smpt.Port = 587;
+            smpt.EnableSsl = true;
+            NetworkCredential nc = new NetworkCredential("advyteama@gmail.com", "advyteama1999");
+            smpt.UseDefaultCredentials = true;
+            smpt.Credentials = nc;
+            smpt.Send(mm);
+            requestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
             return RedirectToAction("IndexUser");
         }
         public ActionResult DeleteUser(int id)
@@ -83,6 +100,7 @@ namespace Pidev.Presentation.Controllers
             HttpClient Client = new HttpClient();
             Client.BaseAddress = new Uri("http://localhost:9080");
             HttpResponseMessage response = Client.DeleteAsync("pidev-web/user/"+id).ContinueWith((postTask)=>postTask.Result.EnsureSuccessStatusCode()).GetAwaiter().GetResult();
+           
             return RedirectToAction("IndexUser"); 
         }
         public ActionResult Login()
@@ -103,6 +121,14 @@ namespace Pidev.Presentation.Controllers
 
                     if (model.password.Equals(user.password))
                     {
+                        User u = new Models.User() {
+                            id = user.id,
+                            nom = user.nom,
+                            prenom = user.prenom,
+                            ImageUrl = user.image
+                        };
+                        Session["userConnected"] = u;
+
                     //    if(user.role.Equals("Employe"))
                     //    {
                     //        return RedirectToAction("IndexUser");

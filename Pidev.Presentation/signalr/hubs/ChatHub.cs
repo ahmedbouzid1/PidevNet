@@ -9,10 +9,15 @@ namespace Pidev.Presentation.signalr.hubs
 {
     public class ChatHub : Hub
     {
-        public void Send(string name,string message)
+        public void Send(string name, string message, string image)
         {
-            Clients.All.addNewMessageToPage(name, message);
+         //   utilisateur user = serviceUtilisateur.GetById(Int32.Parse(id));
+            string dt = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+
+        
+
+            Clients.All.addNewMessageToPage(name, message, dt, "/content/Uploads/" + image);
         }
-            
+
     }
 }

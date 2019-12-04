@@ -1,16 +1,18 @@
-namespace Pidev.data.Migrations
+﻿namespace Pidev.data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ahmed : DbMigration
+    public partial class aa : DbMigration
     {
         public override void Up()
         {
+            
         }
         
         public override void Down()
         {
+             
         }
     }
 }
