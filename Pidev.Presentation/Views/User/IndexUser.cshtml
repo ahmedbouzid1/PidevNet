@@ -64,7 +64,14 @@
                                     <td>@p.email</td>
                                     <td>@p.addresse</td>
                                     <td>@p.role</td>
-                                    <td><a href="/User/DeleteUser/@p.id">delete</a></td>
+                                    <td class="btn btn-danger btn-sm">
+                                        <a class="btn btn-danger btn-sm" href="/User/DeleteUser/@p.id">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                        
+                                    </td>
                                 </tr>
                                 }
 
