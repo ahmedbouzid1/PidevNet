@@ -114,6 +114,10 @@ namespace Pidev.Presentation.Controllers
             requestMessage.Content = new StringContent(json, Encoding.UTF8, "application/json");
             return RedirectToAction("IndexUser");
         }
+
+
+
+
         public ActionResult DeleteUser(int id)
         {
             HttpClient Client = new HttpClient();
@@ -122,11 +126,21 @@ namespace Pidev.Presentation.Controllers
            
             return RedirectToAction("IndexUser"); 
         }
+
+
+
+
         public ActionResult Login()
         {
             LoginModel model = new LoginModel();
             return View(model);
         }
+
+
+
+
+
+
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
@@ -143,20 +157,22 @@ namespace Pidev.Presentation.Controllers
                         User u = new Models.User() {
                             id = user.id,
                             nom = user.nom,
+                            role = user.role,
                             prenom = user.prenom,
                             ImageUrl = user.image
                         };
                         Session["userConnected"] = u;
+                        string a = "DirecteurRH";
 
-                    //    if(user.role.Equals("Employe"))
-                    //    {
-                    //        return RedirectToAction("IndexUser");
-                    //    }
-                    //    if (user.role.Equals("DirecteurRH"))
-                    //    {
-                    //        return RedirectToAction("Create");
-                    //    }
-                        return RedirectToAction("IndexUser");
+                       if(u.role == a)
+                        {
+                            return RedirectToAction("IndexUss");
+                        }
+                        else
+                       {
+                           return RedirectToAction("IndexUss");
+                        }
+                        
                     }
                     else
                     {

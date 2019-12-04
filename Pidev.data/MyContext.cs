@@ -4,6 +4,7 @@ namespace Pidev.data
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Pidev.Domain.Entities;
 
     public partial class MyContext : DbContext
     {
@@ -17,6 +18,7 @@ namespace Pidev.data
         public virtual DbSet<contrat> contrat { get; set; }
         public virtual DbSet<publication> publication { get; set; }
         public virtual DbSet<user> user { get; set; }
+        public virtual DbSet<map> map { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

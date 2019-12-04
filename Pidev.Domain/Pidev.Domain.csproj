@@ -65,9 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Class1.cs" />
     <Compile Include="Entities\commentaire.cs" />
     <Compile Include="Entities\contrat.cs" />
+    <Compile Include="Entities\map.cs" />
     <Compile Include="Entities\publication.cs" />
     <Compile Include="Entities\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,13 +7,13 @@ namespace Pidev.data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.3.0")]
-    public sealed partial class aa : IMigrationMetadata
+    public sealed partial class jajajll : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(aa));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(jajajll));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912032242381_aa"; }
+            get { return "201912042252406_jajajll"; }
         }
         
         string IMigrationMetadata.Source
