@@ -13,7 +13,7 @@ namespace Pidev.Presentation.Controllers
         {
             string qqq = "a";
             string qqqq = "a";
-
+            int kk = 00;
             int yyy = 0;
             int xx = 0;
             int x = 9;
