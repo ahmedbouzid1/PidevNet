@@ -12,6 +12,8 @@ namespace Pidev.Presentation.Controllers
         public ActionResult Index()
         {
             string qqq = "a";
+            string qqqq = "a";
+
             int yyy = 0;
             int xx = 0;
             int x = 9;
