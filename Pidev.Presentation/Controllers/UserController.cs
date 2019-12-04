@@ -88,7 +88,7 @@ namespace Pidev.Presentation.Controllers
             smpt.Host = "smtp.gmail.com";
             smpt.Port = 587;
             smpt.EnableSsl = true;
-            NetworkCredential nc = new NetworkCredential("advyteama@gmail.com", "advyteama1999");
+            NetworkCredential nc = new NetworkCredential("advyteama@gmail.com", "advyteama");
             smpt.UseDefaultCredentials = true;
             smpt.Credentials = nc;
             smpt.Send(mm);

@@ -16,6 +16,7 @@ namespace Pidev.data
             contrat1 = new HashSet<contrat>();
             publication = new HashSet<publication>();
         }
+        
 
         public int id { get; set; }
 
