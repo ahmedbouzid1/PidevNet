@@ -46,6 +46,25 @@ namespace Pidev.Presentation.Controllers
             return View();
         }
 
+        public ActionResult IndexUss()
+        {
+            HttpClient Client = new HttpClient();
+            Client.BaseAddress = new Uri("http://localhost:9080");
+            Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = Client.GetAsync("pidev-web/user").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.result = response.Content.ReadAsAsync<IEnumerable<user>>().Result;
+            }
+            else
+            {
+                ViewBag.result = "error";
+            }
+
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
